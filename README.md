@@ -1,10 +1,13 @@
 whyirun
 =======
 
-A simple way to share 'Why I Run' with the world. Built on the MEAN stack.
+A simple way to share 'Why I Run' with the world. Because let's face it...we're all out there for our own reason. 
+
+-Built on the MEAN stack.
 
 
-### Quick Start
+Quick Start
+-----------
 
 1. Clone the repo: `https://github.com/sethshober/whyirun`
 2. `cd` to cloned directory
