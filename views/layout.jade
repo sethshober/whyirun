@@ -1,7 +1,16 @@
 doctype html
 html
   head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0 user-scalable=no')
     title= title
+    link(rel='stylesheet', href='/javascripts/vendor/bootstrap-css/css/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400', rel='stylesheet', type='text/css')
   body
     block content
+    footer.text-center © 2014
+    script(src='/javascripts/vendor/jquery/jquery.js')
+    script(src='/javascripts/vendor/jquery-ui/jquery-ui.js')
+    script(src='/javascripts/vendor/bootstrap-javascript/bootstrap.js')
+    script(src='/javascripts/app/app.js')
