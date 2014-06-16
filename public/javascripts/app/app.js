@@ -34,24 +34,19 @@ $('#share').keyup(function() {
 function addPost () {
 	if($('#share').val().length < 141){
 		post = $('#share').val();
-		$('#posts').prepend("<div id='newPost'>"+post+"</div><span class='heart glyphicon glyphicon-heart'></span><hr>");
-		$('#newPost').hide().toggle('slide');
+		
 		//clear post and reset count
 		$('#share').val('');
 		$('#counter').html('0');
 
 		var moveTo = ($('#posts').offset().top) - 50;
-		$('html, body').animate({scrollTop: moveTo});
+		$('html body').animate({scrollTop: moveTo}, function(callback) {
+			$('#posts').prepend("<div id='newPost'>"+post+"</div><span class='heart glyphicon glyphicon-heart' id='newHeart'></span><hr>");
+			$('#newPost').hide().toggle('slide');
+		});
 
 	} else {
 		$('#share').effect('shake', {times: 2, distance: 10});
 	}
 
 };
-
-    $(".scroll").click(function(event){
-      event.preventDefault();
-      var id = $(this).attr("href");
-      var divPosition = $(id).offset().top;
-      $("html, body").animate({scrollTop: divPosition});
-    });

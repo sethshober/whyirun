@@ -8,7 +8,8 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-
+var mongoose = require('mongoose');
+var fs = require('fs');
 var app = express();
 
 // all environments
@@ -26,10 +27,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
+  mongoose.connect('mongodb://localhost');
 }
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+  // yay!
+  console.log('successful mongo connection');
+});
+
+//load all files in models directory                                                                
+fs.readdirSync(__dirname + '/models').forEach(function(filename) {
+  if(~filename.indexOf('.js')) require(__dirname + '/models/' + filename)
+});
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/feed', function(req, res) {
+  mongoose.model('Post').find(function(err, Post) {
+    res.send(Post);
+  });
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
