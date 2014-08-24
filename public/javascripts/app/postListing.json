@@ -1,0 +1,49 @@
+[
+	{ "content": "Because I feel at peace.",
+	  "favorite": true,
+	  "likes": 24,
+	  "date": "May 28"
+	},
+
+	{ "content": "So I can indulge in decadent entrees.",
+	  "favorite": true,
+	  "likes": 15,
+	  "date": "May 28"
+	},
+	
+	{ "content": "So my dog Milo and I can get some exercise and hit the trails. Guy can’t sit around all day.",
+	  "favorite": false,
+	  "likes": 8,
+	  "date": "May 28"
+	},
+
+	{ "content": "For the ladies.",
+	  "favorite": false,
+	  "likes": 0,
+	  "date": "May 28"
+	},
+
+	{ "content": "To escape.",
+	  "favorite": true,
+	  "likes": 5,
+	  "date": "May 28"
+	},
+
+	{ "content": "this has 140 characters this has 140 characters this has 140 characters this has 140 characters this has 140 characters this has 140 charact",
+	  "favorite": false,
+	  "likes": 0,
+	  "date": "May 28"
+	},
+
+	{ "content": "After years of wanting to I finally started running, and it totally changed my life in so many ways.",
+	  "favorite": true,
+	  "likes": 12,
+	  "date": "May 28"
+	},
+
+	{ "content": "It makes me feel alive.",
+	  "favorite": true,
+	  "likes": 49,
+	  "date": "May 28"
+	}
+]
