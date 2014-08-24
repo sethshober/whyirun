@@ -53,6 +53,11 @@ h2 {
 	font-size: .75em;
 }
 
+.date {
+	font-size: .75em;
+	float: right;
+}
+
 .post-list {
 	margin-top: 5em;
 	font-size: 1.5em;
