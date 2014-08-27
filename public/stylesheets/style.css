@@ -1,6 +1,7 @@
 body {
 	-webkit-font-smoothing: antialiased;
 	font-family: 'Source Sans Pro', HelveticaNeue-UltraLight, Helvetica, sans-serif;
+	background: #fcfcfc;
 }
 
 h1 {
@@ -17,14 +18,23 @@ h2 {
 	color: #888;
 }
 
+/*#changeWord {
+	font-weight: 400;
+	font-size: 9em;
+	margin-top: 75px;
+	line-height: 90%;
+	color: #333;
+	display: inline-block;
+}*/
+
 .bar {
 	z-index: 100;
 	position: fixed;
 	width: 100%;
 	height: 3em;
 	top: 0;
-	background: white;
-	opacity: 0.90;
+	opacity: 0.9;
+	background: #fcfcfc;
 /*	-webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
 	   -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
 	        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0);*/
@@ -54,8 +64,12 @@ h2 {
 }
 
 .date {
-	font-size: .75em;
+	font-size: .4em;
 	float: right;
+	position: absolute;
+	bottom: 5px;
+	right: 8px;
+	color: #ccc;
 }
 
 .post-list {
@@ -64,24 +78,110 @@ h2 {
 	font-weight: 300;
 }
 
-.heart {
-	color: #666;
-	font-size: .8em;
+.post {
+    border-radius: 2.5px;
+    background: seagreen;
+    position: relative;
+    height: 310px;
+    max-width: 360px;
+    margin: 1em auto;
+    color: #eee;
+    line-height: 43px;
+    font-size: 36px;
+    overflow: hidden;
+    z-index: 5;
+    transition: box-shadow 150ms;
+}
+
+.post:hover {
+    -moz-box-shadow:    inset 0px 0px 30px 0px rgba(0,0,0,0.50);
+    box-shadow:         inset 0px 0px 30px 0px rgba(0,0,0,0.50);
+}
+
+.post-2 {
+    border-radius: 2.5px;
+    background: violet;
+    position: relative;
+    height: 310px;
+    max-width: 360px;
+    margin: 1em auto;
+    color: #eee;
+    line-height: 43px;
+    font-size: 36px;
+    overflow: hidden;
+    z-index: 5;
+    transition: box-shadow 150ms;
+}
+
+.post-2:hover {
+    -moz-box-shadow:    inset 0px 0px 30px 0px rgba(0,0,0,0.50);
+    box-shadow:         inset 0px 0px 30px 0px rgba(0,0,0,0.50);
+}
+
+.post-content {
+    display: table-cell;
+    vertical-align: middle;
+    height: inherit;
+    text-align: center;
+    padding: .25em;
+    font-weight: 400;
+}
+
+.post-content-2 {
+    display: table-cell;
+    vertical-align: middle;
+    height: inherit;
+    text-align: center;
+    padding: .25em;
+    font-weight: 400;
+}
+
+.heart, .heart::before {
+	color: #eee;
+	font-size: .9em;
+    position: absolute;
+    top: 5px;
+    right: 5px; 
+    z-index: 10;
 }
 
 .heart:hover{
-	color: #E65050;
 	cursor: pointer;
 }
 
-.hearted {
-	color: #E65050;
-	font-size: .8em;
+.hearted,.hearted::before {
+	color: #eee;
+	font-size: .9em;
+    position: absolute;
+    top: 5px;
+    right: 5px; 
+    z-index: 10;
+    opacity: 0.75;
+    transition: opacity 150ms;
+    
 }
 
 .hearted:hover {
-	color: #666;
 	cursor: pointer;
+    opacity: 1;
+}
+
+
+.hearted-2,.hearted-2::before {
+    color: #eee;
+    font-size: .9em;
+    position: absolute;
+    bottom: 5px;
+    right: 5px; 
+    z-index: 10;
+    opacity: 0.75;
+    transition: opacity 150ms;
+    
+}
+
+.hearted-2:hover {
+    cursor: pointer;
+    opacity: 1;
 }
 
 footer {
@@ -119,3 +219,13 @@ textarea {
             transition: box-shadow 250ms ease;
 }
 
+/* desktop and large desktop */
+@media only screen and (min-width: 992px) {
+    .hearted,.hearted::before {
+        top: -20px;
+    }
+
+    .post,.post-2 {
+    	width: 360px;
+    }
+}
