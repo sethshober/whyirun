@@ -25,14 +25,23 @@ $(document).ready(function(){
 		}
 	});
 
+	//switch out heading (this is the vision)
+	// var headingWords = [" I Backpack", " I Love My Dog", " I Bake", " I Play the Ukele", " I'm a Cheese Taster", " I'm a Mohawk Enthusiast"];
+	// setInterval(function(){
+	// 	if(true){
+	// 		var changeWord = headingWords[Math.floor(Math.random()*headingWords.length)];	
+	// 		$("#changeWord").html(changeWord).hide().fadeIn();
+	// 	}
+	// }, 5000);
 
-	$('.heart').on("click", function() {
-	$(this).removeClass("heart").addClass("hearted");
-	})
 
-	$('.hearted').on("click", function() {
-		$(this).removeClass("hearted").addClass("heart");
-	})
+	// $('.heart').on("click", function() {
+	// $(this).removeClass("heart").addClass("hearted");
+	// })
+
+	// $('.hearted').on("click", function() {
+	// 	$(this).removeClass("hearted").addClass("heart");
+	// })
 
 
 	
@@ -45,11 +54,11 @@ $(document).ready(function(){
 			$('#share').val('');
 			$('#counter').html('0');
 
-			var moveTo = ($('#posts').offset().top) - 50;
-			$('html body').animate({scrollTop: moveTo}, function(callback) {
-				$('#posts').prepend("<div id='newPost'>"+post+"</div><span class='heart glyphicon glyphicon-heart'></span><hr>");
-				$('#newPost').hide().toggle('slide');
-			});
+			$('.post-list').prepend("<div class='post' id='newPost'><p class='text-center post-content'>" + post + "</p><span class='hearted glyphicon glyphicon-heart'></span></div>");
+			//$('#newPost').hide().fadeIn();
+
+			var moveTo = ($('.post-list').offset().top) - 50;
+			$('html body').animate({scrollTop: moveTo});
 
 		} else {
 			$('#share').effect('shake', {times: 2, distance: 10});
@@ -57,7 +66,16 @@ $(document).ready(function(){
 
 	};
 
-
+	//show like button on desktop and large desktop
+	if($(window).width() > 992){
+		$(".post").hover(  
+		        function(){
+		        	$('.hearted').stop(true,true).animate({top: 25}, 100);  
+		        },  
+		        function(){
+		        	$('.hearted').stop(true,true).animate({top: -20}, 100);  
+			});
+		}
 
 
 	//posts to load initially for testing purposes Object
@@ -164,6 +182,7 @@ $(document).ready(function(){
 	// 			];
 
 
+	//AJAX to grab post, currently as JSON
 	//for loop to iterate posts object and display to initial page load
 	//grab #post div and append each object as post
 
@@ -177,21 +196,22 @@ $(document).ready(function(){
 		        //update DOM
 				var postListing = JSON.parse(xmlhttp.responseText);	
 				console.log(postListing);	        
-				var posts = $("#posts");
+				var posts = $(".post-list");
 				var post = '';
 				for(i = 0; i < postListing.length; i++){
-					post += "<div>" + postListing[i].content + "</div>";
+					post += "<div class='post'><p class='text-center post-content'>" + postListing[i].content + "</p>";
 						if(postListing[i].favorite === false){
-							post += "<span class='heart glyphicon glyphicon-heart'></span>";
+							post += "<span class='hearted glyphicon glyphicon-heart'></span>";
 						} else {
 							post += "<span class='hearted glyphicon glyphicon-heart'></span>";
 						}
-					post += "<span class='text-muted like-counter'>" + postListing[i].likes + "</span>" + 
-							"<span class='text-muted date'>" + postListing[i].date + "</span>" + 
-							"</div>" + 
-							"<hr>";
+					//add counter and date	
+					// post += "<span class='text-muted like-counter'>" + postListing[i].likes + "</span>" + 
+					// 		"<span class='text-muted date'>" + postListing[i].date + "</span>" + 
+					   post += "</div>";
 				}
-				posts.prepend(post);
+				//glitches...disabling
+				//posts.append(post);
 		    }
 		}
 		xmlhttp.open("GET", url, true);
