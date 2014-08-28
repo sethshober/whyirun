@@ -80,7 +80,7 @@ h2 {
 
 .post {
     border-radius: 2.5px;
-    background: seagreen;
+    background: #23748E;
     position: relative;
     height: 310px;
     max-width: 360px;
@@ -100,7 +100,7 @@ h2 {
 
 .post-2 {
     border-radius: 2.5px;
-    background: violet;
+    background: #FF5886;
     position: relative;
     height: 310px;
     max-width: 360px;
