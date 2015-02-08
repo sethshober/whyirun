@@ -6,6 +6,7 @@ var PostSchema = new Schema({
 	content: String,
 	date: { type: Date, default: Date.now },
 	likes: { type: Number, default: 0}
+	//owner: user_id
 });
 
 var Post = mongoose.model('Post', PostSchema);
