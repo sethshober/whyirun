@@ -1,7 +1,54 @@
+/*====================================
+=            ON DOM READY            =
+====================================*/
+
+
 $(document).ready(function(){
 	$('#share').focus();
 
-}); //end Document Ready
+	$('.toggle-nav').click(function() {
+        // Calling a function in case you want to expand upon this.
+        toggleNav();
+    });
+});
+
+
+/*========================================
+=            CUSTOM FUNCTIONS            =
+========================================*/
+function toggleNav() {
+    if ($('#site-wrapper').hasClass('show-nav')) {
+        // Do things on Nav Close
+        $('#site-wrapper').removeClass('show-nav');
+        $('#bar').addClass('bar');
+    } else {
+        // Do things on Nav Open
+        $('#site-wrapper').addClass('show-nav');
+        $('#bar').removeClass('bar');
+    }
+
+    //$('#site-wrapper').toggleClass('show-nav');
+}
+
+//escape key closes Nav
+$(document).keyup(function(e) {
+    if (e.keyCode == 27) {
+        if ($('#site-wrapper').hasClass('show-nav')) {
+            // Assuming you used the function I made from the demo
+            toggleNav();
+        }
+    } 
+});
+
+// show Nav button
+// $(window).scroll(function() {
+// 	var distanceFromTop = $(this).scrollTop();
+// 	if(distanceFromTop > 25) {
+// 		$('#menu-button').removeClass('hidden');
+// 	} else {
+// 		$('#menu-button').addClass('hidden');
+// 	}
+// });
 
 
 
@@ -188,13 +235,14 @@ $(document).ready(function(){
 
 	function displayPosts(){
 		//AJAX
-		var xmlhttp = new XMLHttpRequest();
-		var url = '/javascripts/app/postListing.json';
+		var postRequest = new XMLHttpRequest();
+		var postJSON = '/javascripts/app/postListing.json';
 
-		xmlhttp.onreadystatechange = function() {
-		    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		postRequest.onreadystatechange = function() {
+			//if we all have all the data and things are OK...
+		    if (postRequest.readyState == 4 && postRequest.status == 200) {
 		        //update DOM
-				var postListing = JSON.parse(xmlhttp.responseText);	
+				var postListing = JSON.parse(postRequest.responseText);	
 				console.log(postListing);	        
 				var posts = $(".post-list");
 				var post = '';
@@ -210,15 +258,50 @@ $(document).ready(function(){
 					// 		"<span class='text-muted date'>" + postListing[i].date + "</span>" + 
 					   post += "</div>";
 				}
-				//glitches...disabling
-				//posts.append(post);
+				posts.append(post);
 		    }
 		}
-		xmlhttp.open("GET", url, true);
-		xmlhttp.send();
-	};
+		postRequest.open("GET", postJSON, true);
+		postRequest.send();
+	}
 
 	displayPosts();
+
+
+		function getJson(){
+		//AJAX
+		var postRequest = new XMLHttpRequest();
+		var postJSON = 'http://localhost:3000/posts';
+
+		postRequest.onreadystatechange = function() {
+			//if we all have all the data and things are OK...
+		    if (postRequest.readyState == 4 && postRequest.status == 200) {
+		        //update DOM
+		        console.log('post listing');
+				var postListing = JSON.parse(postRequest.responseText);	
+				console.log(postListing);	        
+				// var posts = $(".post-list");
+				// var post = '';
+				// for(i = 0; i < postListing.length; i++){
+				// 	post += "<div class='post'><p class='text-center post-content'>" + postListing[i].content + "</p>";
+				// 		if(postListing[i].favorite === false){
+				// 			post += "<span class='hearted glyphicon glyphicon-heart'></span>";
+				// 		} else {
+				// 			post += "<span class='hearted glyphicon glyphicon-heart'></span>";
+				// 		}
+				// 	//add counter and date	
+				// 	// post += "<span class='text-muted like-counter'>" + postListing[i].likes + "</span>" + 
+				// 	// 		"<span class='text-muted date'>" + postListing[i].date + "</span>" + 
+				// 	   post += "</div>";
+				}
+				//posts.append(post);
+		    }
+		    
+		postRequest.open("GET", postJSON, true);
+		postRequest.send();
+	}
+
+	getJson();
 
 
 

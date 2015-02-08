@@ -1,37 +1,65 @@
 extends layout
 
 block content
-  .bar
-  .container-fluid
-      .row
-        .col-md-12
-          h1.text-center Why I Run
-        .col-md-12
-          h2.text-center Share with the world why you run.
-        .col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3.share-box.col-sm-6.col-sm-offset-3
-          #panel-share.panel.panel-info
-            textarea#share.panel-body(rows='4')
-            .panel-footer.text-right
-              span#counter.text-counter 0
-              span#maxCount /140
-              button#share.btn.btn-info(type='button', onclick='addPost()') Share!
-    .post-wrapper
-      .container-fluid
-        .row
-          .col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3
-            .post-list
-              .post
-                p.text-center.post-content Because I feel at peace.
-                  span.hearted.glyphicon.glyphicon-heart
-              .post-2
-                  p.text-center.post-content-2
-                    | So my dog Milo and I can get some exercise and hit the trails. Guy can’t sit around all day.
-                  span.hearted-2.glyphicon.glyphicon-heart
-              .post
-                  p.text-center.post-content So I can indulge in decadent entrees.
-                  span.hearted.glyphicon.glyphicon-heart
-              .post-2
-                  p.text-center.post-content-2
-                    | After years of wanting to I finally started running, and it totally changed my life in so many ways.
-                  span.hearted-2.glyphicon.glyphicon-heart
+  #site-wrapper
+      #site-canvas
+          #site-menu
+            h2 My Menu
+            |         &#x9;
+            p.lead Put any HTML you want here.
+            |         &#x9;
+            p Style it however you want.
+            |         &#x9;
+            ul
+              li Free to scroll up and down
+              |             &#x9;
+              li But not left and write
+          |      &#x9;
+          a#menu-button.toggle-nav.btn.btn-lg.btn-default(href='#')
+            span.glyphicon.glyphicon-align-justify
+          | &#x9;&#x9;
+          .container-fluid
+            .row
+              .col-md-12
+                h1.text-center Why I Run
+              | &#x9;&#x9;&#x9;&#x9;
+              .col-md-12
+                h2.text-center Share with the world why you run.
+              | &#x9;&#x9;&#x9;&#x9;
+              .col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3.share-box.col-sm-6.col-sm-offset-3
+                #panel-share.panel.panel-info
+                  textarea#share.panel-body(rows='4')
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  .panel-footer.text-right
+                    // <span id="share-twitter"><input type="checkbox" name="twitter" value="twitter" id="share-twitter"> Share to Twitter </span>
+                    span#counter.text-counter 0
+                    span#maxCount /140
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    button#share-button.btn.btn-info(type='button', onclick='addPost()') Share!
+          | &#x9;&#x9;
+          .post-wrapper
+            .container-fluid
+              .row
+                .post-list.col-xs-12
+                  .post
+                    p.text-center.post-content Because I feel at peace.
+                    span.hearted.glyphicon.glyphicon-heart
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  .post-2
+                    p.text-center.post-content-2
+                      | So my dog Milo and I can get some exercise and hit the trails. Guy can&rsquo;t sit around all day.
+                    span.hearted-2.glyphicon.glyphicon-heart
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  .post
+                    p.text-center.post-content So I can indulge in decadent entrees.
+                    span.hearted.glyphicon.glyphicon-heart
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  .post-2
+                    p.text-center.post-content-2
+                      | After years of wanting to I finally started running, and it totally changed my life in so many ways.
+                    span.hearted-2.glyphicon.glyphicon-heart
+          footer.text-center © 2014
+
+
+
 
