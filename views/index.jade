@@ -22,14 +22,14 @@ block content
           .container-fluid
             .row
               .col-md-12
-                h1.text-center Why I Run
+                h1#main-heading.text-center Why I Run
               | &#x9;&#x9;&#x9;&#x9;
               .col-md-12
-                h2.text-center Share with the world why you run.
+                h2#share-heading.text-center Share with the world why you run.
               | &#x9;&#x9;&#x9;&#x9;
               .col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3.share-box.col-sm-6.col-sm-offset-3
                 #panel-share.panel.panel-info
-                  textarea#share.panel-body(rows='4')
+                  textarea#share.panel-body(placeholder='Why do you run?', rows='4')
                   | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
                   .panel-footer.text-right
                     // <span id="share-twitter"><input type="checkbox" name="twitter" value="twitter" id="share-twitter"> Share to Twitter </span>

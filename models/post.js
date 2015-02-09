@@ -4,9 +4,9 @@ var Schema   = mongoose.Schema;
 // User Schema
 var PostSchema = new Schema({
 	content: String,
-	date: { type: Date, default: Date.now },
-	likes: { type: Number, default: 0}
-	//owner: user_id
+	created: { type: Date, default: Date.now },
+	likes: { type: Number, default: 0},
+	owner: String
 });
 
 var Post = mongoose.model('Post', PostSchema);
