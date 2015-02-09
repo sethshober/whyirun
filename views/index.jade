@@ -4,19 +4,20 @@ block content
   #site-wrapper
       #site-canvas
           #site-menu
-            h2 My Menu
-            |         &#x9;
-            p.lead Put any HTML you want here.
-            |         &#x9;
-            p Style it however you want.
-            |         &#x9;
-            ul
-              li Free to scroll up and down
-              |             &#x9;
-              li But not left and write
-          |      &#x9;
+            div
+              span.glyphicon.glyphicon-user(aria-hidden='true')
+              a(href='http://localhost:3000/logout') Logout
+            div
+              span.glyphicon.glyphicon-road(aria-hidden='true')
+              a(href='') More Stuff
+            div
+              span.glyphicon.glyphicon-music(aria-hidden='true')
+              a(href='') Even some more stuff
+            div
+              span.glyphicon.glyphicon-cog(aria-hidden='true')
+              a(href='') Maybe some settings
           a#menu-button.toggle-nav.btn.btn-lg.btn-default(href='#')
-            span.glyphicon.glyphicon-align-justify
+            span#hamburger.glyphicon.glyphicon-align-justify
           | &#x9;&#x9;
           .container-fluid
             .row

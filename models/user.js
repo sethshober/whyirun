@@ -103,10 +103,11 @@ function deleteUser (dataObj) {
 };
 
 
-function findUser (username) {
+function findUser (email, callback) {
 
-	User.find(username, function(err){
+	User.find({"email": email}, function(err, user){
 		if (err) { return console.error(err); }
+		else { callback(user); }
 	});
 
 };

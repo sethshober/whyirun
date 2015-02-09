@@ -237,6 +237,7 @@ textarea {
     left: .5em;
     border: none;
     background: #fcfcfc;
+    font-size: 2.5em;
 }
 
 #site-wrapper {
@@ -304,10 +305,32 @@ textarea {
     position: absolute;
     top: 0;
     left: -300px;
-    padding: 15px;
-    background: #eee;
+    padding: 0;
+    background: #333;
     border-right: 1px solid #aaa;
+    margin: 0;
+    color: #f9f9f9;
 }
+
+#site-menu div {
+    top: 0;
+    padding: 0.75em;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+    .side-menu:first-child {
+        border-top: none;
+    }
+
+#site-menu a {
+    text-decoration: none;
+    color: inherit;
+}   
+
+#site-menu span {
+    margin-right: 1em;
+} 
 
 #site-wrapper.show-nav #site-canvas {
     /* GOOD */

@@ -45,7 +45,7 @@ function deletePost (dataObj) {
 
 
 // RETRIEVE POST FROM DATABASE
-function getPosts () {
+function getPosts (callback) {
 
 
 // <div class="post">
@@ -55,14 +55,15 @@ function getPosts () {
 
 
 	Post.find({}, function(err, posts){
-		
+		console.log(posts);
 		if (err) { return console.error(err); }
 		else {
-			//console.log(posts);
-			return posts;
-		}
+				callback(posts);
+				//return postHTML;
 
+		}
 	});
+}
 
 		// var postHTML;
 		// if (err) { return console.error(err); }
@@ -115,8 +116,6 @@ function getPosts () {
 	// return stream;
 
 
-
-};
 
 
 

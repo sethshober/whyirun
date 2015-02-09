@@ -233,43 +233,45 @@ $(document).keyup(function(e) {
 	//for loop to iterate posts object and display to initial page load
 	//grab #post div and append each object as post
 
-	function displayPosts(){
-		//AJAX
-		var postRequest = new XMLHttpRequest();
-		var postJSON = '/javascripts/app/postListing.json';
+	// function displayPosts(){
+	// 	//AJAX
+	// 	var postRequest = new XMLHttpRequest();
+	// 	var postJSON = '/javascripts/app/postListing.json';
 
-		postRequest.onreadystatechange = function() {
-			//if we all have all the data and things are OK...
-		    if (postRequest.readyState == 4 && postRequest.status == 200) {
-		        //update DOM
-				var postListing = JSON.parse(postRequest.responseText);	
-				console.log(postListing);	        
-				var posts = $(".post-list");
-				var post = '';
-				for(i = 0; i < postListing.length; i++){
-					post += "<div class='post'><p class='text-center post-content'>" + postListing[i].content + "</p>";
-						if(postListing[i].favorite === false){
-							post += "<span class='hearted glyphicon glyphicon-heart'></span>";
-						} else {
-							post += "<span class='hearted glyphicon glyphicon-heart'></span>";
-						}
-					//add counter and date	
-					// post += "<span class='text-muted like-counter'>" + postListing[i].likes + "</span>" + 
-					// 		"<span class='text-muted date'>" + postListing[i].date + "</span>" + 
-					   post += "</div>";
-				}
-				posts.append(post);
-		    }
-		}
-		postRequest.open("GET", postJSON, true);
-		postRequest.send();
-	}
+	// 	postRequest.onreadystatechange = function() {
+	// 		//if we all have all the data and things are OK...
+	// 	    if (postRequest.readyState == 4 && postRequest.status == 200) {
+	// 	        //update DOM
+	// 			var postListing = JSON.parse(postRequest.responseText);	
+	// 			console.log(postListing);	        
+	// 			var posts = $(".post-list");
+	// 			var post = '';
+	// 			for(i = 0; i < postListing.length; i++){
+	// 				post += "<div class='post'><p class='text-center post-content'>" + postListing[i].content + "</p>";
+	// 					if(postListing[i].favorite === false){
+	// 						post += "<span class='hearted glyphicon glyphicon-heart'></span>";
+	// 					} else {
+	// 						post += "<span class='hearted glyphicon glyphicon-heart'></span>";
+	// 					}
+	// 				//add counter and date	
+	// 				// post += "<span class='text-muted like-counter'>" + postListing[i].likes + "</span>" + 
+	// 				// 		"<span class='text-muted date'>" + postListing[i].date + "</span>" + 
+	// 				   post += "</div>";
+	// 			}
+	// 			posts.append(post);
+	// 	    }
+	// 	}
+	// 	postRequest.open("GET", postJSON, true);
+	// 	postRequest.send();
+	// }
 
-	displayPosts();
+	// displayPosts();
 
 
+
+	//AJAX to get posts from database
 		function getJson(){
-		//AJAX
+		
 		var postRequest = new XMLHttpRequest();
 		var postJSON = 'http://localhost:3000/posts';
 
@@ -277,9 +279,13 @@ $(document).keyup(function(e) {
 			//if we all have all the data and things are OK...
 		    if (postRequest.readyState == 4 && postRequest.status == 200) {
 		        //update DOM
-		        console.log('post listing');
-				var postListing = JSON.parse(postRequest.responseText);	
-				console.log(postListing);	        
+		        console.log('post listing from database');
+				console.log(postRequest.responseText);
+				var posts = postRequest.responseText.slice(10, -1);
+				console.log(posts);
+				var postDiv = $('.post-list');
+				postDiv.append(posts);
+
 				// var posts = $(".post-list");
 				// var post = '';
 				// for(i = 0; i < postListing.length; i++){
