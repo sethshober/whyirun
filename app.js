@@ -71,9 +71,8 @@ app.listen(config.port, function(){
 
     db.once('open', function(){
         console.log("Successfully connected to MongoDB whyirun!");
-
     });
-    
+        
 });
 
 
