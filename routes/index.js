@@ -53,7 +53,7 @@ router.get('/login', function(req, res, next) {
 router.post('/login', function(req, res, next) {
 	console.log(req.body);
     User.findUser(req.body.email, function(user) {
-    	var user = user[0];
+    	//var user = user[0];
     	console.log(user);
 	    if ( user && user.email === req.body.email && user.password === req.body.password ) {
 	   	  console.log("success");
@@ -78,14 +78,22 @@ router.get('/signup', function(req, res, next) {
 
 router.post('/signup', function(req, res, next) {
   console.log("signup received");
-  // User.saveUser(req.body);
-  // var user = User.findUser(req.body.email, function(){
-  //   res.cookie('youAreLoggedIn', user._id);
-  //   res.redirect('/');
-  // });
-  res.cookie('youAreLoggedIn', req.body.email);
-  res.redirect('/');
+  User.saveUser(req.body, function(){
+    User.findUser(req.body.email, function(user){
+      console.log(user);
+      res.cookie('youAreLoggedIn', user._id, { maxAge: 2592000000 });
+      res.redirect('/');
+    });
+
+  });
+
 });
+
+
+
+router.get('/test', function(req, res, next) {
+  console.log(User.findUser("hello@hello.com"));
+})
 
 
 

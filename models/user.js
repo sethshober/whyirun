@@ -72,10 +72,11 @@ UserSchema.methods.authenticate = function (password) {
 
 
 // SAVE CREATED USER
-function saveUser (newUser) {
+function saveUser (newUser, callback) {
 
-	newUser.save(function(error){
+	User.update(newUser, function(error){
 		if (error) { return console.error(error); }
+		else { callback(); }
 	});
 
 };
@@ -105,9 +106,10 @@ function deleteUser (dataObj) {
 
 function findUser (email, callback) {
 
-	User.find({"email": email}, function(err, user){
+	User.findOne({"email": email}, function(err, user){
+		console.log(user);
 		if (err) { return console.error(err); }
-		else { callback(user); }
+		else { callback(user) }
 	});
 
 };
