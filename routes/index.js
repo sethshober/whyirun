@@ -55,28 +55,37 @@ router.post('/login', function(req, res, next) {
     User.findUser(req.body.email, function(user) {
     	var user = user[0];
     	console.log(user);
-    	if (!user) { console.log("failed"); res.render ('login', {title: 'Incorrect login information'}); }
-	    else if ( user.email === req.body.email && user.password === req.body.password ) {
+	    if ( user && user.email === req.body.email && user.password === req.body.password ) {
 	   	  console.log("success");
-	      res.cookie('youAreLoggedIn', user._id);
+	      res.cookie('youAreLoggedIn', user._id, { maxAge: 2592000000 });
 	      res.redirect('/');
-	    }
+	    } else { 
+        console.log("failed"); res.render ('login', {title: 'Incorrect login information'}); 
+      }
     });
 
 });
 
 
-// router.get('/signup', function(req, res, next) {
-//   res.render('signup', { title: 'Sign up for Why I Run' });
-// });
+router.get('/signup', function(req, res, next) {
+  if (!req.cookies["youAreLoggedIn"]) {
+    res.render('signup', {title: "Sign up for Why I Run"});
+  } else {
+    res.redirect('/');
+  } 
+});
 
 
-// router.post('/signup', function(req, res, next) {
-//   User.saveUser(newUser);
-//   var user = User.findUser(email);
-//   res.cookie('youAreLoggedIn', user._id);
-//   res.redirect('/');
-// });
+router.post('/signup', function(req, res, next) {
+  console.log("signup received");
+  // User.saveUser(req.body);
+  // var user = User.findUser(req.body.email, function(){
+  //   res.cookie('youAreLoggedIn', user._id);
+  //   res.redirect('/');
+  // });
+  res.cookie('youAreLoggedIn', req.body.email);
+  res.redirect('/');
+});
 
 
 

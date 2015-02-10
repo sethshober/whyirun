@@ -11,6 +11,8 @@ var bodyParser   = require('body-parser');
 var mongoose     = require('mongoose');
 var routes       = require('./routes/index');
 var users        = require('./routes/users');
+var redis        = require("redis");
+var client       = redis.createClient();
 var app          = express();
 
 
@@ -72,7 +74,22 @@ app.listen(config.port, function(){
     db.once('open', function(){
         console.log("Successfully connected to MongoDB whyirun!");
     });
-        
+ 
+    // REDIS
+    // if you'd like to select database 3, instead of 0 (default), call 
+    // client.select(3, function() { /* ... */ }); 
+
+    client.on("error", function (err) {
+        console.log("Error " + err);
+    });
+
+    client.on("ready", function (err) {
+        if (err) { return console.error(err); }
+        else {
+            console.log("Redis is ready.");
+        }
+    });
+            
 });
 
 
